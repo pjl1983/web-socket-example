@@ -1,0 +1,21 @@
+<mat-card class="example-card">
+  <mat-card-content>
+    <div *ngFor="let message of conversation">
+      <mat-card class="message" *ngIf="message?.name === name">
+        <b>{{message?.name}}</b>
+        <p>{{message?.message}}</p>
+      </mat-card>
+      <mat-card class="message" *ngIf="message?.name !== name" style="float: right">
+        <b>{{message?.name}}</b>
+        <p>{{message?.message}}</p>
+      </mat-card>
+    </div>
+  </mat-card-content>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="Message" (keyup.enter)="sendMessage()" [(ngModel)]="value"/>
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</mat-card>
+
